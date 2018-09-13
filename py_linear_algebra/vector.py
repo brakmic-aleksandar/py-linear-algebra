@@ -15,17 +15,17 @@ class Vector:
 
     def __add__(self, v):
         self.__assert_compatibility(v)
-        newVectorValues = [x + y for x, y in zip(self.coordinates, v.coordinates)] 
-        return Vector(newVectorValues)
+        new_coordinates = [x + y for x, y in zip(self.coordinates, v.coordinates)] 
+        return Vector(new_coordinates)
 
     def __sub__(self, v):
         self.__assert_compatibility(v)
-        newVectorValues = [x - y for x,y in zip(self.coordinates, v.coordinates)]
-        return Vector(newVectorValues)
+        new_coordinates = [x - y for x, y in zip(self.coordinates, v.coordinates)]
+        return Vector(new_coordinates)
 
     def __mul__(self, v):
-        newVectorValues = [x * v for x in self.coordinates] 
-        return Vector(newVectorValues)
+        new_coordinates = [x * v for x in self.coordinates] 
+        return Vector(new_coordinates)
 
     def __assert_compatibility(self, v):
         if type(v) is not Vector:
