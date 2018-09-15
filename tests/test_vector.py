@@ -33,3 +33,24 @@ class TestVectorMethods(unittest.TestCase):
         expected_result = Vector ([0.9339352140866403, -0.35744232526233])
         result = Vector([5.581, -2.136]).normalized()
         self.assertEqual(result, expected_result)
+
+    def test_dot_product(self):
+        expected_result = -41.382286
+        v1 = Vector([7.887, 4.138])
+        v2 = Vector([-8.802, 6.776])
+        result = v1.dot_product(v2)
+        self.assertEqual(result, expected_result)
+
+    def test_angle_radians(self):
+        expected_result = 3.072026309837249
+        v1 = Vector([3.183, -7.627])
+        v2 = Vector([-2.668, 5.319])
+        result = v1.angle_radians(v2)
+        self.assertEqual(result, expected_result)
+
+    def test_angle_degrees(self):
+        expected_result = 60.27581120523091
+        v1 = Vector([7.35, 0.221, 5.188])
+        v2 = Vector([2.751, 8.259, 3.985])
+        result = v1.angle_degrees(v2)
+        self.assertEqual(result, expected_result)

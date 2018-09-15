@@ -1,4 +1,6 @@
 from math import sqrt
+from math import acos
+from math import pi
 
 class Vector:
     def __init__(self, coordinates):
@@ -24,7 +26,7 @@ class Vector:
         return Vector(new_coordinates)
 
     def __mul__(self, v):
-        new_coordinates = [x * v for x in self.coordinates] 
+        new_coordinates = self.multiply_scalar(v)
         return Vector(new_coordinates)
 
     def __assert_compatibility(self, v):
@@ -32,6 +34,21 @@ class Vector:
             raise TypeError(type(v))
         if(self.length != v.length):
             raise ValueError("Vector dimensions must be same.")
+
+    def multiply_scalar(self, s):
+        return  [x * s for x in self.coordinates] 
+
+    def dot_product(self, v):
+        return sum([x * y for x, y in zip(self.coordinates, v.coordinates)])
+
+    def angle_radians(self, v):
+        try:
+            return acos(self.normalized().dot_product(v.normalized()))
+        except ValueError:
+            raise ValueError("Can't find angle if one of vectors is zero vector")
+
+    def angle_degrees(self, v):
+        return self.angle_radians(v) * (180.0 / pi)
 
     def magnitude(self):
         return sqrt(sum(x**2 for x in self.coordinates))
