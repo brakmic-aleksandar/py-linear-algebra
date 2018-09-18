@@ -49,7 +49,7 @@ class Vector:
             raise ValueError("Can't find angle if one of vectors is zero vector")
 
     def angle_degrees(self, v):
-        return self.angle_radians(v) * Decimal(180.0 / pi)
+        return self.angle_radians(v) * (Decimal(180.0) / Decimal(pi))
 
     def magnitude(self):
         return Decimal(sqrt(sum(x**2 for x in self.coordinates)))
@@ -60,3 +60,17 @@ class Vector:
             return self * (Decimal(1.0) / magnitude)
         except ZeroDivisionError:
             raise ValueError("Zero vectors can't be normalized")
+
+    def is_zero(self):
+        return 0.00 in self.coordinates
+
+    def parallel_with(self, v, tolerance=1e-10):
+        if(self.is_zero() or v.is_zero()):
+            return True
+        return (self.angle_radians(v) == Decimal(0.00) or
+                round(self.angle_radians(v), 2) == round(Decimal(pi), 2))
+
+    def orthogonal_with(self, v):
+        if(self.is_zero() or v.is_zero()):
+            return True
+        return self.dot_product(v) == Decimal(0.00)
