@@ -95,30 +95,3 @@ class TestVectorMethods(unittest.TestCase):
         v2 = Vector(['0', '0'])
         self.assertTrue(v1.orthogonal_with(v2))
         self.assertTrue(v2.orthogonal_with(v1))
-
-getcontext().prec = 10
-v1 = Vector(['-7.579', '-7.88'])
-v2 = Vector(['22.737', '23.64'])
-print(v1.dot_product(v2))
-print(v1.normalized(), v2.normalized())
-print(v1.parallel_with(v2))
-print(v1.orthogonal_with(v2))
-
-v1 = Vector(['-2.029', '9.97', '4.172'])
-v2 = Vector(['-9.231', '-6.631', '-7.245'])
-print(v1.dot_product(v2))
-print(v1.normalized(), v2.normalized())
-print(v1.parallel_with(v2))
-print(v1.orthogonal_with(v2))
-
-v1 = Vector(['-2.328', '-7.284', '-1.214'])
-v2 = Vector(['-1.821', '1.072', '-2.94'])
-print(v1.dot_product(v2))
-print(v1.normalized(), v2.normalized())
-print(v1.parallel_with(v2))
-print(v1.orthogonal_with(v2))
-
-v1 = Vector(['2.118', '4.827'])
-v2 = Vector(['0', '0'])
-print(v1.parallel_with(v2))
-print(v1.orthogonal_with(v2))
