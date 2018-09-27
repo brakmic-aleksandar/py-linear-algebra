@@ -74,3 +74,9 @@ class Vector:
         if(self.is_zero() or v.is_zero()):
             return True
         return self.dot_product(v) == Decimal(0.00)
+
+    def projection_parallel_component(self, v):
+        return v.normalized() * self.dot_product(v.normalized()) 
+
+    def projection_orthogonal_component(self, v):
+        return self - self.projection_parallel_component(v)

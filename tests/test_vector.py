@@ -95,3 +95,19 @@ class TestVectorMethods(unittest.TestCase):
         v2 = Vector(['0', '0'])
         self.assertTrue(v1.orthogonal_with(v2))
         self.assertTrue(v2.orthogonal_with(v1))
+
+    def test_projection_parallel_component(self):
+        expected_result = Vector ([1.082606962484466748509592830, 2.671742758325302181776401215])
+        v = Vector(['3.039', '1.879'])
+        b = Vector(['0.825', '2.036'])
+        result = v.projection_parallel_component(b)
+        self.assertAlmostEqual(result.coordinates[0], expected_result.coordinates[0])
+        self.assertAlmostEqual(result.coordinates[1], expected_result.coordinates[1])
+    
+    def test_projection_orthogonal_component(self):
+        expected_result = Vector ([-8.350081043195762176562894528, 3.376061254287719889840950108, -1.433746042781185660594106663])
+        v = Vector(['-9.88', '-3.264', '-8.159'])
+        b = Vector(['-2.155', '-9.353', '-9.473'])
+        result = v.projection_orthogonal_component(b)
+        self.assertAlmostEqual(result.coordinates[0], expected_result.coordinates[0])
+        self.assertAlmostEqual(result.coordinates[1], expected_result.coordinates[1])
