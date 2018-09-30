@@ -111,3 +111,25 @@ class TestVectorMethods(unittest.TestCase):
         result = v.projection_orthogonal_component(b)
         self.assertAlmostEqual(result.coordinates[0], expected_result.coordinates[0])
         self.assertAlmostEqual(result.coordinates[1], expected_result.coordinates[1])
+
+    def test_cross_product(self):
+        expected_result = Vector ([Decimal('-11.204571'), Decimal('-97.609444'), Decimal('-105.685162')])
+        v = Vector(['8.462', '7.893', '-8.187'])
+        v1 = Vector(['6.984', '-5.975', '4.778'])
+        result = v.cross_product(v1)
+        self.assertAlmostEqual(result.coordinates[0], expected_result.coordinates[0])
+        self.assertAlmostEqual(result.coordinates[1], expected_result.coordinates[1])
+
+    def test_parallelogram_span(self):
+        expected_result = Decimal('142.12222141523')
+        v = Vector(['-8.987', '-9.838', '5.031'])
+        v1 = Vector(['-4.268', '-1.861', '-8.866'])
+        result = v.parallelogram_span(v1)
+        self.assertAlmostEqual(result, expected_result)
+
+    def test_triangle_span(self):
+        expected_result = Decimal('42.56493740')
+        v = Vector(['1.5', '9.547', '3.691'])
+        v1 = Vector(['-6.007', '0.124', '5.772'])
+        result = v.triangle_span(v1)
+        self.assertAlmostEqual(result, expected_result)

@@ -1,5 +1,6 @@
 from math import sqrt
 from math import acos
+from math import sin
 from math import pi
 from decimal import Decimal, getcontext
 
@@ -80,3 +81,15 @@ class Vector:
 
     def projection_orthogonal_component(self, v):
         return self - self.projection_parallel_component(v)
+
+    def cross_product(self, v):
+        x = self.coordinates[1] * v.coordinates[2] - v.coordinates[1] * self.coordinates[2]
+        y = - (self.coordinates[0] * v.coordinates[2] - self.coordinates[2] * v.coordinates[0])
+        z = self.coordinates[0] * v.coordinates[1] - v.coordinates[0] * self.coordinates[1]
+        return Vector([x, y, z])
+
+    def parallelogram_span(self, v):
+        return self.cross_product(v).magnitude()
+
+    def triangle_span(self, v):
+        return self.parallelogram_span(v) / 2
